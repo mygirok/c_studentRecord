@@ -36,7 +36,7 @@ int main()
 		system("cls");
 		
 		// output Menu.
-		cout << "1. Add student" << endl;
+		cout << "1. Add Student" << endl;
 		cout << "2. Delete Student" << endl;
 		cout << "3. Search Student" << endl;
 		cout << "4. Output Student" << endl;
@@ -44,6 +44,18 @@ int main()
 		cout << "Please select a menu : ";
 		int iMenu;
 		cin >> iMenu;
+		
+		// input check
+		// 1. error check. if error, cin.fail() return true.
+		if (cin.fail())
+		{
+			// Empty error buffer.
+			cin.clear();
+
+			// Delete \n in input buffer.
+			cin.ignore(1024, '\n');
+			continue;
+		}
 
 		if (iMenu == MENU_EXIT)
 			break;
