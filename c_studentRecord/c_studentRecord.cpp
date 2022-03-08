@@ -3,23 +3,29 @@
 
 using namespace std;
 
-#define NAME_SIZE 32
-#define STUDENT_MAX 10
+#define	NAME_SIZE		32
+#define	ADDRESS_SIZE	128
+#define PHONE_SIZE		14
+
+#define	STUDENT_MAX		10
+
 
 struct _tagStudent
 {
-	char strName[NAME_SIZE];
-	int iNumber;
-	int iKor;
-	int iEng;
-	int iMath;
-	int iTotal;
-	float fAvg; 
+	char	strName[NAME_SIZE];
+	char	strAddress[ADDRESS_SIZE];
+	char	strPhoneNumber[PHONE_SIZE];
+	int		iNumber;
+	int		iKor;
+	int		iEng;
+	int		iMath;
+	int		iTotal;
+	float	fAvg; 
 };
 
 enum MENU
 {
-	MENU_NON,
+	MENU_NONE,
 	MENU_INSERT,
 	MENU_DELETE,
 	MENU_SEARCH,
@@ -30,6 +36,9 @@ enum MENU
 int main()
 {
 	_tagStudent tStudentArr[STUDENT_MAX] = {};
+	// Array length
+	int	iStudentCount = 0;
+	int iStdNumber = 1;
 
 	while (true)
 	{
@@ -63,6 +72,16 @@ int main()
 		switch (iMenu)
 		{
 		case MENU_INSERT:
+			system("cls");
+			cout << "=============== Add Student ===============" << endl;
+			// Input student info.
+			cout << "Name : ";
+			cin >> tStudentArr[iStudentCount].strName; 
+
+			cin.ignore(1024, '\n');
+
+			cout << "Address : ";
+			cin.getline(tStudentArr[iStudentCount].strAddress, ADDRESS_SIZE);
 			break;
 		case MENU_DELETE:
 			break;
