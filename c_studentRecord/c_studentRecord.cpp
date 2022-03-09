@@ -40,6 +40,8 @@ int main()
 	int	iStudentCount = 0;
 	int iStdNumber = 1;
 
+	char strName[NAME_SIZE] = {};
+
 	while (true)
 	{
 		system("cls");
@@ -117,6 +119,30 @@ int main()
 		case MENU_DELETE:
 			break;
 		case MENU_SEARCH:
+			system("cls");
+
+			cout << "=============== Search Student ===============" << endl;
+
+			
+			cin.ignore(1024, '\n');
+			cout << "Input searching name : ";
+			cin.getline(strName, NAME_SIZE);
+
+			for (int i = 0; i < iStudentCount; ++i)
+			{
+				if (strcmp(tStudentArr[i].strName, strName) == 0)
+				{
+					cout << "Name : " << tStudentArr[i].strName << endl;
+					cout << "Phone Number : " << tStudentArr[i].strPhoneNumber << endl;
+					cout << "Student Number : " << tStudentArr[i].iNumber << endl;
+					cout << "Korean : " << tStudentArr[i].iKor << endl;
+					cout << "English : " << tStudentArr[i].iEng << endl;
+					cout << "Math : " << tStudentArr[i].iMath << endl;
+					cout << "Total : " << tStudentArr[i].iTotal << endl;
+					cout << "Average : " << tStudentArr[i].fAvg << endl << endl;
+					break;
+				}
+			}
 			break;
 		case MENU_OUTPUT:
 			system("cls");
