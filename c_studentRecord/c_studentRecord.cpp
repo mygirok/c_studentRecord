@@ -74,6 +74,10 @@ int main()
 		case MENU_INSERT:
 			system("cls");
 			cout << "=============== Add Student ===============" << endl;
+			// Check limit.
+			if (iStudentCount == STUDENT_MAX)
+				break;
+
 			// Input student info.
 			cout << "Name : ";
 			cin >> tStudentArr[iStudentCount].strName; 
@@ -82,12 +86,53 @@ int main()
 
 			cout << "Address : ";
 			cin.getline(tStudentArr[iStudentCount].strAddress, ADDRESS_SIZE);
+
+			cout << "Phone number : ";
+			cin.getline(tStudentArr[iStudentCount].strPhoneNumber, PHONE_SIZE);
+
+			cout << "Korean :";
+			cin >> tStudentArr[iStudentCount].iKor;
+
+			cout << "English :";
+			cin >> tStudentArr[iStudentCount].iEng;
+
+			cout << "Math :";
+			cin >> tStudentArr[iStudentCount].iMath;
+
+			tStudentArr[iStudentCount].iTotal =
+				tStudentArr[iStudentCount].iKor +
+				tStudentArr[iStudentCount].iEng +
+				tStudentArr[iStudentCount].iMath;
+			tStudentArr[iStudentCount].fAvg =
+				tStudentArr[iStudentCount].iTotal / 3.f;  
+
+			tStudentArr[iStudentCount].iNumber = iStdNumber;
+
+			++iStdNumber;
+			++iStudentCount;
+
+			cout << " Complete adding " << endl;
+
 			break;
 		case MENU_DELETE:
 			break;
 		case MENU_SEARCH:
 			break;
 		case MENU_OUTPUT:
+			system("cls");
+			cout << "=============== Output Student ===============" << endl;
+			
+			for (int i = 0; i < iStudentCount; ++i)
+			{
+				cout << "Name : " << tStudentArr[i].strName << endl;
+				cout << "Phone Number : " << tStudentArr[i].strPhoneNumber << endl;
+				cout << "Student Number : " << tStudentArr[i].iNumber << endl;
+				cout << "Korean : " << tStudentArr[i].iKor << endl;
+				cout << "English : " << tStudentArr[i].iEng << endl;
+				cout << "Math : " << tStudentArr[i].iMath << endl;
+				cout << "Total : " << tStudentArr[i].iTotal << endl;
+				cout << "Average : " << tStudentArr[i].fAvg << endl << endl;
+			}
 			break;
 		default:
 			cout << "You chose the wrong menu." << endl;
