@@ -117,15 +117,36 @@ int main()
 
 			break;
 		case MENU_DELETE:
+			cout << "=============== Delete Student ===============" << endl;
+
+			 cin.ignore(1024, '\n');
+			cout << "Enter deleting name : ";
+			cin.getline(strName, NAME_SIZE);
+			for (int i = 0; i < iStudentCount; ++i)
+			{
+				if (strcmp(tStudentArr[i].strName, strName) == 0)
+				{
+					for (int j = i; j < iStudentCount - 1; ++j)
+					{
+						tStudentArr[i] = tStudentArr[i + 1];
+					}
+
+					--iStudentCount;
+
+					cout << "Complete deleting " << endl;
+					break;
+				}
+			}
+
 			break;
 		case MENU_SEARCH:
 			system("cls");
 
 			cout << "=============== Search Student ===============" << endl;
 
-			
+
 			cin.ignore(1024, '\n');
-			cout << "Input searching name : ";
+			cout << "Enter searching name : ";
 			cin.getline(strName, NAME_SIZE);
 
 			for (int i = 0; i < iStudentCount; ++i)
